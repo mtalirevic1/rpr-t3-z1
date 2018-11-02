@@ -27,8 +27,13 @@ public class FiksniBroj extends TelefonskiBroj {
         TREBINJE("059");
 
         private final String pozivniBroj;
+
         Grad(String pozivniBroj){
             this.pozivniBroj=pozivniBroj;
+        }
+
+        public final String getPozivniBroj(){
+            return pozivniBroj;
         }
     }
     private Grad grad;
