@@ -1,7 +1,5 @@
 package ba.unsa.etf.rpr.tutorijal03;
 
-import org.w3c.dom.ranges.RangeException;
-
 import java.util.Objects;
 
 public class MobilniBroj extends TelefonskiBroj {
