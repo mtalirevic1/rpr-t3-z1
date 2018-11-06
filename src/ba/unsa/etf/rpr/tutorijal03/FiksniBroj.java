@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.tutorijal03;
 
 import java.util.Objects;
 
-public class FiksniBroj extends TelefonskiBroj {
+public class FiksniBroj extends TelefonskiBroj implements Comparable<TelefonskiBroj> {
 
     public enum Grad{
         SARAJEVO("033"),
@@ -43,6 +43,19 @@ public class FiksniBroj extends TelefonskiBroj {
         this.broj=broj;
     }
 
+    public Grad getGrad() {
+        return grad;
+    }
+
+    public void setGrad(Grad grad) {
+        this.grad = grad;
+    }
+
+    @Override
+    public int compareTo(TelefonskiBroj broj) {
+        return this.ispisi().compareTo(broj.ispisi());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,6 +72,8 @@ public class FiksniBroj extends TelefonskiBroj {
 
     @Override
     public String ispisi(){
-        return grad+"/"+broj;
+        return grad.pozivniBroj+"/"+broj;
     }
+
+
 }

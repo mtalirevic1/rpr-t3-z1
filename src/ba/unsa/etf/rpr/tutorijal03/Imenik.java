@@ -2,40 +2,8 @@ package ba.unsa.etf.rpr.tutorijal03;
 
 import java.util.*;
 
+
 public class Imenik {
-
-    public enum Grad{
-        SARAJEVO("033"),
-        TUZLA("035"),
-        ODZAK("031"),
-        ZENICA("032"),
-        LIVNO("034"),
-        MOSTAR("036"),
-        BIHAC("037"),
-        GORAZDE("038"),
-        LJUBUSKI("039"),
-        BRCKO("049"),
-        MRKONJICGRAD("050"),
-        BANJALUKA("051"),
-        PRIJEDOR("052"),
-        DOBOJ("053"),
-        SAMAC("054"),
-        BIJELJINA("055"),
-        ZVORNIK("056"),
-        PALE("057"),
-        FOCA("058"),
-        TREBINJE("059");
-
-        private final String pozivniBroj;
-
-        Grad(String pozivniBroj){
-            this.pozivniBroj=pozivniBroj;
-        }
-
-        public final String getPozivniBroj(){
-            return pozivniBroj;
-        }
-    }
 
     private HashMap<String, TelefonskiBroj> mapa;
 
@@ -66,12 +34,40 @@ public class Imenik {
         Iterator it = mapa.entrySet().iterator();
         while (it.hasNext()) {
             HashMap.Entry<String, TelefonskiBroj> par = (HashMap.Entry<String, TelefonskiBroj>) it.next();
-            if(par.getKey().charAt(0)==s) ispis=ispis+brojac+". "+par.getKey()+" - "+par.getValue().ispisi()+"\n";
+            if(par.getKey().charAt(0)==s) {
+                ispis = ispis + brojac + ". " + par.getKey() + " - " + par.getValue().ispisi() + "\n";
+                brojac++;
+            }
         }
         return ispis;
     }
 
-    TreeSet<String> izGrada(Grad g){
-
+    Set<String> izGrada(FiksniBroj.Grad g){
+        TreeSet<String> skup=new TreeSet<String>();
+        Iterator it=mapa.entrySet().iterator();
+        while(it.hasNext()){
+            HashMap.Entry<String, TelefonskiBroj> par = (HashMap.Entry<String, TelefonskiBroj>) it.next();
+            if (par.getValue() instanceof FiksniBroj) {
+                if ( ( (FiksniBroj) par.getValue() ).getGrad().equals(g) )
+                    skup.add(par.getKey());
+            }
+        }
+        return skup;
     }
+
+    Set<TelefonskiBroj> izGradaBrojevi(FiksniBroj.Grad g){
+        TreeSet<TelefonskiBroj> brojeviIzGrada = new TreeSet<>(); //TreeSet u koji smjestamo odgovarajuce TelefonskeBrojeve sortirana po Stringu ispisi();
+        Iterator it = mapa.entrySet().iterator();
+        while (it.hasNext()) {
+            HashMap.Entry<String, TelefonskiBroj> par = (HashMap.Entry<String, TelefonskiBroj>) it.next();
+            if (par.getValue() instanceof FiksniBroj) { //ako je odg. Object instanca klase FiksniBroj i ako je grad tog broja jednak parametru g onda dodajemo u skup odg string koji je ime i prezime ;
+                if (g.equals(((FiksniBroj) par.getValue()).getGrad())) {
+                    brojeviIzGrada.add(par.getValue());
+                }
+            }
+        }
+        return brojeviIzGrada;
+    }
+
+
 }
