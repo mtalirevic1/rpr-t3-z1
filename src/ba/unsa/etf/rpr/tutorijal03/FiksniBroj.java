@@ -58,8 +58,8 @@ public class FiksniBroj extends TelefonskiBroj implements Comparable<TelefonskiB
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FiksniBroj)) return false;
+        if (this == o) {return true;}
+        if (!(o instanceof FiksniBroj)){ return false;}
         FiksniBroj that = (FiksniBroj) o;
         return grad == that.grad &&
                 Objects.equals(broj, that.broj);

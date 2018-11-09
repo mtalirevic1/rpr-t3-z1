@@ -23,7 +23,7 @@ public class Imenik {
         Iterator it=mapa.entrySet().iterator();
         while(it.hasNext()){
             HashMap.Entry<String,TelefonskiBroj> par= (HashMap.Entry<String, TelefonskiBroj>) it.next();
-            if(par.getValue()==broj) return par.getKey();
+            if(par.getValue()==broj) {return par.getKey();}
         }
         return "";
     }
@@ -48,8 +48,9 @@ public class Imenik {
         while(it.hasNext()){
             HashMap.Entry<String, TelefonskiBroj> par = (HashMap.Entry<String, TelefonskiBroj>) it.next();
             if (par.getValue() instanceof FiksniBroj) {
-                if ( ( (FiksniBroj) par.getValue() ).getGrad().equals(g) )
+                if ( ( (FiksniBroj) par.getValue() ).getGrad().equals(g) ) {
                     skup.add(par.getKey());
+                }
             }
         }
         return skup;

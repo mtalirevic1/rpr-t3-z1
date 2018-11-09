@@ -8,7 +8,7 @@ public class MobilniBroj extends TelefonskiBroj {
     private String broj;
 
     MobilniBroj(int mobilnaMreza, String broj){
-        if(mobilnaMreza<60 || mobilnaMreza>67) throw new IllegalArgumentException("Mobilna mreza nije validna");
+        if(mobilnaMreza<60 || mobilnaMreza>67){ throw new IllegalArgumentException("Mobilna mreza nije validna");}
         this.mobilnaMreza=mobilnaMreza;
         this.broj=broj;
     }
@@ -20,8 +20,8 @@ public class MobilniBroj extends TelefonskiBroj {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MobilniBroj)) return false;
+        if (this == o){ return true;}
+        if (!(o instanceof MobilniBroj)){ return false;}
         MobilniBroj that = (MobilniBroj) o;
         return mobilnaMreza == that.mobilnaMreza &&
                 Objects.equals(broj, that.broj);

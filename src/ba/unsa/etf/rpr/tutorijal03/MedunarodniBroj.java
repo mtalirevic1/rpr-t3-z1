@@ -19,8 +19,8 @@ public class MedunarodniBroj extends TelefonskiBroj {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MedunarodniBroj)) return false;
+        if (this == o){ return true;}
+        if (!(o instanceof MedunarodniBroj)){ return false;}
         MedunarodniBroj that = (MedunarodniBroj) o;
         return Objects.equals(drzava, that.drzava) &&
                 Objects.equals(broj, that.broj);
